@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset ="utf-8">
+  <title>School Result Management</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="{{ url_for ('static', filename='user/css/bootstrap.min.css' ) }}" rel="stylesheet">
+  <link href="{{ url_for ('static', filename='' ) }}" rel="shortcut icon"
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light" style="margin: 2px; height:70px;">
+    <button type="button" class="btn btn-outline-primary btn-md">Student Result Management</button>
+  </nav>
+
+  {% block body %} {% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{ url_for ('static', filename='user/js/bootstrap.bundle.min.js' ) }}"></script>
+  <script type="text/javascript" src="{{ url_for ('static', filename='user/js/bootstrap.bundle.js' ) }}"></script>
+</body>
+
+</html>
