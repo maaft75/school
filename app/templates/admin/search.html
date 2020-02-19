@@ -5,7 +5,7 @@
 <body>
     <div class="container">
         <br>
-        <h4>Upload</h4>
+        <h4>Check</h4>
         <br>
         
         {% for category, message in get_flashed_messages(with_categories=true)  %}
@@ -23,10 +23,20 @@
             <dl>
                 {{ render_field(form.matricNo)}}
             </dl>
-            <p><input type=submit value=Upload></p>    
+            <p><input type=submit value=Check></p>    
         </form>
         {% if error %}
             <p class="error"><strong>Error:</strong>{{error}}</p>
+        {% endif %}
+        <br>
+        {% if post %}
+            <h5> Computer Science: {{ post[0] }} </h5><br>
+            <h5> Physics: {{ post[1] }} </h5><br>
+            <h5> Chemistry : {{ post[2] }} </h5><br>
+            <h5> Biology: {{ post[3] }} </h5><br>
+            <h5> English Language: {{ post[4] }} </h5><br>
+            <h5> Mathematics: {{ post[5] }} </h5><br>
+            <h5> Matriculation Number: {{ post[6] }} </h5>
         {% endif %}
     </div>
 </body>

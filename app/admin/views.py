@@ -56,9 +56,6 @@ def register():
 
 
         except Exception as e:
-
-            #since this is not inside a class use return str(traceback.formatexc()), you will have to import traceback
-            #if it is inside a class, use return str(self.traceback.format_exc())
             return str(traceback.format_exc())
 
     return render_template('admin/register.html', form=form)
@@ -94,17 +91,14 @@ def result():
 
                 flash('Result Upload Successful', category = 'success')
                 return redirect(url_for('admin.result'))
-
+            
             else:
                 flash('Error During Registration', category = 'danger')
                 return redirect(url_for('admin.result'))
 
 
         except Exception as e:
-
-            #since this is not inside a class use return str(traceback.formatexc()), you will have to import traceback
-            #if it is inside a class, use return str(self.traceback.format_exc())
-            return str(traceback.format_exc())
+            return str(self.traceback.format_exc())
 
     return render_template('admin/result.html', form=form)
 
@@ -124,9 +118,8 @@ def search():
             if results:
                 
                 for result in results:
-                    post = 'Computer science: ' + result[0] +', Physics: ' + result[1] +', Chemistry: '+ result[2] +', Biology: '+ result[3] + ', English Language: ' + result[4] +', Mathematics: ' + result[5] + ', Matriculation Number: ' + str(result[6])
-                    flash(post, category='success')
-                    return redirect(url_for('admin.search'))
+                    post = result
+                    return render_template('admin/course.html', post=post)
 
             else:
                 flash ('No Records' , category='danger')

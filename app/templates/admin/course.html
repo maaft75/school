@@ -1,0 +1,21 @@
+{% extends 'admin/header.html' %}
+
+
+{% block body %}
+<body>
+    <div class="container">
+        <br>
+        {% if post %}
+            <h4>Result for {{ post[6] }} </h4>
+            <br/>
+            <h5> Computer Science: {{ post[0] }} </h5><br>
+            <h5> Physics: {{ post[1] }} </h5><br>
+            <h5> Chemistry : {{ post[2] }} </h5><br>
+            <h5> Biology: {{ post[3] }} </h5><br>
+            <h5> English Language: {{ post[4] }} </h5><br>
+            <h5> Mathematics: {{ post[5] }} </h5><br>
+            <h5> Matriculation Number: {{ post[6] }} </h5>
+        {% endif %}
+    </div>
+</body>
+{% endblock  %}
