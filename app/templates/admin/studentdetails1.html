@@ -1,0 +1,34 @@
+{% extends 'admin/header.html' %}
+{% from "admin/_formhelpers.html" import render_field%}
+
+{% block body %}
+<body>
+    <div class="container">
+        <br>
+        <h4>Student's Details</h4>
+        <br>
+        {% for category, message in get_flashed_messages(with_categories=true)  %}
+
+            <div class="alert alert-{{category}} alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong> {{ message }} </strong>
+            </div>
+
+        {% endfor %}
+        <br>
+        <form method=post action="">
+            <dl>
+                {{ render_field(form.matricNo)}}
+            </dl>
+            <p><input type=submit value=Search></p>    
+        </form>
+        <br>
+        {% if post %} 
+            <h5> Matriculation Number: {{ post[0] }} </h5> <br>
+            <h5> Surname: {{ post[1] }} </h5> <br>
+            <h5> First Name : {{ post[2] }} </h5> <br>
+            <h5> Year: {{ post[3] }} </h5></li> <br>
+        {% endif %}
+    </div>
+</body>
+{% endblock  %}

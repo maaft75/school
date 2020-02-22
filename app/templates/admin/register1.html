@@ -1,0 +1,35 @@
+{% extends 'admin/header.html' %}
+{% from "admin/_formhelpers.html" import render_field%}
+
+{% block body %}
+<body>
+    <div class="container">
+        <br>
+        <h4>Register</h4>
+        <br>
+        
+        {% for category, message in get_flashed_messages(with_categories=true)  %}
+
+            <div class="alert alert-{{category}} alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong> {{ message }} </strong>
+            </div>
+
+        {% endfor %}
+
+        <br>
+        <form method=post action="">
+            <dl>
+                {{ render_field(form.matricNo)}}
+                {{ render_field(form.surname)}}
+                {{ render_field(form.firstname)}}
+                {{ render_field(form.year)}}
+            </dl>
+            <p><input type=submit value=Register></p>    
+        </form>
+        {% if error %}
+            <p class="error"><strong>Error:</strong>{{error}}</p>
+        {% endif %}
+    </div>
+</body>
+{% endblock  %}

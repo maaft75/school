@@ -1,0 +1,35 @@
+{% extends 'admin/header.html' %}
+{% from "admin/_formhelpers.html" import render_field%}
+
+{% block body %}
+<body>
+    <div class="container">
+        <br>
+        <h4>Add Classes and Subject Combinations</h4>
+        <br>
+
+        {% for message,categories in get_flashed_messages(with_categories=true)%}
+
+            <div class="alert alert-{{category}} alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong> {{ message }} </strong>
+            </div>
+
+        {% endfor %}
+
+        <br>
+        <form method=post action="">
+            <dl>
+                {{ render_field(form.year)}}
+                {{ render_field(form.subjectone)}}
+                {{ render_field(form.subjecttwo)}}
+                {{ render_field(form.subjectthree)}}
+                {{ render_field(form.subjectfour)}}
+                {{ render_field(form.subjectfive)}}
+                {{ render_field(form.subjectsix)}}
+            </dl>
+            <p><input type=submit value=Register></p> 
+        </form>
+    </div>
+</body>
+{% endblock %}
