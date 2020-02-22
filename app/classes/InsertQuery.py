@@ -5,11 +5,11 @@ import traceback
 dbFunctions = Dbfunctions()
 
 class InsertQuery():
-    def _addUser(self, matricNo, surname, firstname, year):
+    def _addUser1(self, matricNo, surname, firstname, year):
 
         try:
 
-            query = "INSERT INTO studentinfo(matricNo, surname, firstname, year) VALUES ('%s', '%s', '%s', '%s')" %(matricNo, surname, firstname, year)
+            query = "INSERT INTO studentinfo1(matricNo, surname, firstname, year) VALUES ('%s', '%s', '%s', '%s')" %(matricNo, surname, firstname, year)
             
             dbFunctions._Initiatedb()
             
@@ -27,10 +27,10 @@ class InsertQuery():
 
             dbFunctions._Closedb()
 
-    def _addResult(self, computerscience, physics, chemistry, biology, english, mathematics, matricNo):
+    def _addResult1(self, english, mathematics, economics, physics, chemistry, matricNo):
         try:
 
-            query = "INSERT INTO studentresult(computerscience, physics, chemistry, biology, english, mathematics, matricNo) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" %(computerscience, physics, chemistry, biology, english, mathematics, matricNo)
+            query = "INSERT INTO resultyear1(english, mathematics, economics, physics, chemistry, matricNo) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" %(english, mathematics, economics, physics, chemistry, matricNo)
             
             dbFunctions._Initiatedb()
 
