@@ -5,10 +5,10 @@
 <body>
     <div class="container">
         <br>
-        <h4>Add Classes and Subject Combinations</h4>
+        <h4>Add Class and Subject Combinations</h4>
         <br>
 
-        {% for message,categories in get_flashed_messages(with_categories=true)%}
+        {% for category, message in get_flashed_messages(with_categories=true)  %}
 
             <div class="alert alert-{{category}} alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -26,7 +26,6 @@
                 {{ render_field(form.subjectthree)}}
                 {{ render_field(form.subjectfour)}}
                 {{ render_field(form.subjectfive)}}
-                {{ render_field(form.subjectsix)}}
             </dl>
             <p><input type=submit value=Register></p> 
         </form>

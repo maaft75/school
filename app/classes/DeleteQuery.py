@@ -42,3 +42,22 @@ class DeleteQuery():
         finally:
 
             dbfunctions._Closedb()
+
+    def _deletesubjectcombo(self, year):
+
+        try:
+            query = "DELETE FROM subjectcombo WHERE year = '%s'" %(year)
+
+            dbfunctions._Initiatedb()
+
+            dbfunctions.cursor.execute(query)
+
+            dbfunctions._Commitdb()
+
+        except Exception as e:
+
+            return str(self.traceback.format_exc())
+        
+        finally:
+
+            dbfunctions._Closedb()

@@ -31,7 +31,7 @@ class RegistrationUpdate (Form):
     firstname = TextField('First name', [ validators.DataRequired() ])
     year = TextField('Year', [ validators.DataRequired() ])
 
-class ClassCombo(Form):
+class SubjectCombo(Form):
     year = TextField('Year', [ validators.DataRequired() ])
     subjectone = TextField('Subject One', [ validators.DataRequired() ])   
     subjecttwo = TextField('Subject Two', [ validators.DataRequired() ])
@@ -41,3 +41,7 @@ class ClassCombo(Form):
 
 class Search(Form):
     matricNo = TextField('Matriculation Number', [ validators.DataRequired() ])
+
+
+class DeleteSubjectCombo(Form):
+    year = TextField('Year', [ validators.DataRequired() ])

@@ -47,3 +47,25 @@ class InsertQuery():
         finally:
 
             dbFunctions._Closedb()
+
+    def _addClass(self, year, subjectone, subjecttwo, subjectthree, subjectfour, subjectfive):
+
+        try:
+
+            query = "INSERT INTO subjectcombo(year, subject1, subject2, subject3, subject4, subject5) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" %(year, subjectone, subjecttwo, subjectthree, subjectfour, subjectfive)
+
+            dbFunctions._Initiatedb()
+
+            dbFunctions.cursor.execute(query)
+
+            dbFunctions._Commitdb()
+
+            return True
+
+        except Exception as e:
+
+            return str(self.traceback.format_exc())
+
+        finally:
+
+            dbFunctions._Closedb()

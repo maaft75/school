@@ -1,7 +1,7 @@
 from . import admin_blueprint
 import traceback
 
-from .wtforms import RegistrationForm, Results1, Delete1, Search, ClassCombo, Update1, RegistrationUpdate
+from .wtforms import RegistrationForm, Results1, Delete1, Search, Update1, RegistrationUpdate, SubjectCombo, DeleteSubjectCombo
 
 from flask import Flask, render_template, redirect, url_for, flash, request, session
 from app.classes.InsertQuery import InsertQuery
@@ -290,9 +290,9 @@ def checkstudentdetails1():
     return render_template('admin/studentdetails1.html', form=form)
 
 
-@admin_blueprint.route('/classcombo/', methods=['GET','POST'])
-def classcombo():
-    form = ClassCombo(request.form)
+@admin_blueprint.route('/addsubjectcombo/', methods=['GET','POST'])
+def subjectcombo():
+    form = SubjectCombo(request.form)
 
     if request.method == 'POST' and form.validate():
 
@@ -310,9 +310,71 @@ def classcombo():
 
             subjectfive = form.subjectfive.data
 
-            subjectsix = form.subjectsix.data
+            insert = InsertQuery._addClass(year, subjectone, subjecttwo, subjectthree, subjectfour, subjectfive)
+
+            if insert == True:
+
+                flash('Class successfully added.', category= 'success')
+                return redirect(url_for('admin.subjectcombo'))
+            
+            else:
+                flash('Error while adding.' , category= 'danger')
+                return redirect(url_for('admin.subjectcombo'))
 
         except Exception as e:
             return str(traceback.format_exc())
     
-    return render_template('admin/classcombo.html', form=form)
+    return render_template('admin/subjectcombo.html', form=form)
+
+@admin_blueprint.route('/deletesubjectcombo/', methods = ['GET','POST'])
+def deletesubjectcombo():
+    form = DeleteSubjectCombo(request.form)
+
+    if request.method == 'POST' and form.validate():
+
+        try:
+
+            year = form.year.data
+
+            delete = DeleteQuery._deletesubjectcombo(year)
+
+            flash("Student's Details Deleted", category= 'success')
+            return redirect(url_for('admin.deletesubjectcombo'))
+                
+
+        except Exception as e:
+            return str(self.traceback.format_exc())
+        
+    return render_template('admin/deletesubjectcombo.html', form=form)
+
+@admin_blueprint.route('/updatesubjectcombo/', methods = ['GET','POST'])
+def updatesubjectcombo():
+    form = SubjectCombo(request.form)
+
+    if request.method == 'POST' and form.validate():
+
+        try:
+
+            year = form.year.data
+
+            subjectone = form.subjectone.data 
+
+            subjecttwo = form.subjecttwo.data
+
+            subjectthree = form.subjectthree.data
+
+            subjectfour = form.subjectfour.data  
+
+            subjectfive = form.subjectfive.data
+
+
+            update = UpdateQuery._updatesubjectcombo(year, subjectone, subjecttwo, subjectthree, subjectfour, subjectfive)
+
+
+            flash("Subjects updated successfully.", category= 'success')
+            return redirect(url_for('admin.updatesubjectcombo'))
+
+        except Exception as e:
+            return str(traceback.format_exc())
+    
+    return render_template('admin/updatesubjectcombo.html', form = form)

@@ -44,3 +44,23 @@ class UpdateQuery():
         finally:
 
             update._Closedb()
+
+    def _updatesubjectcombo(self, year, subjectone, subjecttwo, subjectthree, subjectfour, subjectfive):
+    
+        try:
+
+            query = "UPDATE subjectcombo SET subject1 = '%s', subject2 = '%s', subject3 = '%s', subject4 = '%s', subject5 = '%s' WHERE year = '%s'" %(subjectone, subjecttwo, subjectthree, subjectfour, subjectfive, year)
+
+            update._Initiatedb()
+
+            update.cursor.execute(query)
+
+            update._Commitdb()
+
+        except Exception as e:
+
+            return str(self.traceback.format_exc())
+        
+        finally:
+
+            update._Closedb()
